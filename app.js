@@ -1,44 +1,81 @@
-// class HelloWorldClass {
+// class LogoImage extends React.Component {
 //   render() {
-//     return <div>Hello World, I'm a {this.props.name}</div>;
+//     return <img className="logo" alt="logo" src="img/logo.svg"/>;
 //   }
 // }
 
-// function HelloWorldFunction(props) {
-//   return <div className="hello">Hello World, I'm a {props.name}</div>;
+// class UserForm extends React.Component {
+//     render() {
+//         return
+//             <form className="block__form" id="form" method="post">
+//             <input className="block__input" name="email" id="email" type="email" placeholder="E-Mail"/>
+//             <input className="block__input" name="password" id="password" type="password" placeholder="Password"/>
+//             <button className="block__button" id="login" type="button">Login</button>
+//             </form>
+//     }
 // }
 
-// ReactDOM.render(
-//   <div>
-//     <HelloWorldFunction name="Awesome Function" />
-//     <HelloWorldClass name="Awesome Class" />
-//   </div>,
-//   document.getElementById("root")
-// );
+// class Section extends React.Component {
+//     render() {
+//         return
+//             <section className = "block">
+//              <LogoImage/>     НЕ УВЕРЕНА, ЧТО ЭТО ПИШЕТСЯ ИМЕННО ТАК
+//              <UserForm/>   НЕ УВЕРЕНА, ЧТО ЭТО ПИШЕТСЯ ИМЕННО ТАК
+//             < /section>
+//     }
+// }
 
-class HelloWorldClass extends React.Component {
-  render() {
-    return React.createElement(
-      "div",
-      null,
-      "Hello World, I'm a ",
-      this.props.name
-    );
-  }
+class LogoImage extends React.Component {
+    render() {
+        return React.createElement(
+            "img",
+            {className: "logo", alt: "logo", src: this.props.src}
+        );
+    }
 }
 
-function HelloWorldFunction(props) {
-  return React.createElement(
-    "div",
-    { className: "hello" },
-    "Hello World, I'm a ",
-    props.name
-  );
+class UserForm extends React.Component {
+    render() {
+        return React.createElement(
+            "form",
+            {className: "block__form", id: "form", method: "post"},
+            React.createElement("input", {
+                className: "block__input",
+                name: "email",
+                id: "email",
+                type: "email",
+                placeholder: "E-Mail"
+            }),
+            React.createElement("input", {
+                className: "block__input",
+                name: "password",
+                id: "password",
+                type: "password",
+                placeholder: "Password"
+            }),
+            React.createElement(
+                "button",
+                {className: "block__button", id: "login", type: "button"},
+                "Login"
+            )
+        );
+    }
 }
+
+class Section extends React.Component {
+    render() {
+        return React.createElement(
+            "section",
+            {className: "block"},
+            React.createElement(UserForm),
+        );
+    }
+}
+
 
 ReactDOM.render(React.createElement(
-  "div",
-  null,
-  React.createElement(HelloWorldFunction, { name: "Awesome Function" }),
-  React.createElement(HelloWorldClass, { name: "Awesome Class" })
+    "div",
+    null,
+    React.createElement(LogoImage, {src: "img/logo.svg"}),
+    React.createElement(Section),
 ), document.getElementById("root"));

@@ -17,6 +17,7 @@ window.React = (function() {
 
   function createElement(element, props, ...children) {
     if (isClass(element)) {
+      // new element это стандартный конструктор, "зашитый" в js?
       const instance = new element(props);
       return instance.render();
     }
@@ -53,6 +54,7 @@ window.React = (function() {
     }
   }
 
+  // Когда мы в коде будем писать new Component. Только не new, а видимо extends, то какие пропсы будут доступны компоненту? Что конкретно тут является пропсами?
   class Component {
     constructor(props) {
       this.props = props;
@@ -74,3 +76,6 @@ window.ReactDOM = (function() {
     render
   };
 })();
+
+// В чем разница между class HelloWorldClass extends React.Component и function HelloWorldFunction(props) (использовали в app.js)
+// Гугл говорит, что class позволит использовать методы жизненого цикла, тогда зачем впринципе использовать function? Что крутого они дают?
